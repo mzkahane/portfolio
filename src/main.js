@@ -1,4 +1,7 @@
 import './style.css';
+import { startLoop } from './engine/gameLoop';
+import { renderMap } from './engine/tileMap';
+import { testMap } from './data/maps/testMap';
 
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
@@ -11,6 +14,8 @@ const MAP_ROWS = 12;
 canvas.width = MAP_COLS * TILE_SIZE;
 canvas.height = MAP_ROWS * TILE_SIZE;
 
-// Temporary: fill canvas to verify setup
-ctx.fillStyle = '#4a8';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+function update(dt) {
+    return;
+}
+
+startLoop(update, () => renderMap(ctx, testMap, TILE_SIZE));
