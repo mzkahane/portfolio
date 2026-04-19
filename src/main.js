@@ -2,6 +2,7 @@ import './style.css';
 import { startLoop } from './engine/gameLoop';
 import { renderMap } from './engine/tileMap';
 import { testMap } from './data/maps/testMap';
+import { isKeyDown } from './engine/input';
 
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
