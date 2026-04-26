@@ -3,22 +3,24 @@ import { startLoop } from './engine/gameLoop';
 import { renderMap } from './engine/tileMap';
 import { testMap } from './data/maps/testMap';
 import { update as playerUpdate, draw as playerDraw } from './engine/player';
+import { applyScale } from './engine/scale';
 
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
 // Tile size in pixels and map dimensions in tiles
-const TILE_SIZE = 32;
-const MAP_COLS = 16;
-const MAP_ROWS = 12;
+const TILE_SIZE = 16;
 
-canvas.width = MAP_COLS * TILE_SIZE;
-canvas.height = MAP_ROWS * TILE_SIZE;
+canvas.width = 240;
+canvas.height = 160;
 
 function update(dt) {
     playerUpdate(dt, TILE_SIZE);
     return;
 }
+
+applyScale();
+window.addEventListener('resize', applyScale);
 
 startLoop(update, () => {
     renderMap(ctx, testMap, TILE_SIZE);

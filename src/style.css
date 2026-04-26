@@ -1,18 +1,56 @@
-*, *::before, *::after {
+:root {
+  --scale: 4;
+}
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+main {
+  display: grid;
+  gap: calc(8px * var(--scale));
+  grid-template-columns: calc(240px * var(--scale)) calc(72px * var(--scale));
+  grid-template-rows:calc(160px * var(--scale)) calc(48px * var(--scale));
+  grid-template-areas: 
+    "viewport nav"
+    "dialogue controls";
+}
+
+main > canvas {
+  grid-area: viewport;
+  image-rendering: pixelated;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  outline: calc(2px * var(--scale)) solid #c0a060;
+}
+
+main > nav {
+  grid-area: nav;
+  background-color: green;
+}
+
+main > div {
+  grid-area: dialogue;
+  background-color: blue;
+}
+
+main > aside {
+  grid-area: controls;
+  background-color: grey;
+  
+}
+
 body {
   background: #111;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
-}
-
-canvas {
-  image-rendering: pixelated;
 }
